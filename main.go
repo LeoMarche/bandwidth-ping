@@ -11,6 +11,7 @@ import (
 	"gonum.org/v1/gonum/stat"
 )
 
+//This function execute a single measure of MinRTT and standard dev on RTT with pingSamples samples
 func execOneMeasure(target string, pingSamples, byteNum int, interval time.Duration) (time.Duration, time.Duration, error) {
 	pinger, err := ping.NewPinger(target)
 
@@ -33,6 +34,7 @@ func execOneMeasure(target string, pingSamples, byteNum int, interval time.Durat
 	return stats.MinRtt, stats.StdDevRtt, nil
 }
 
+//This function does the measures that will be used in regression
 func finalMeasures(target string, maxSize, numberOfSamples, numberOfPingSample int, abs, mes *[]float64) error {
 
 	MinRTT, _, err := execOneMeasure(target, 5, 56, 100*time.Millisecond)
@@ -57,6 +59,7 @@ func finalMeasures(target string, maxSize, numberOfSamples, numberOfPingSample i
 	return nil
 }
 
+//This function tries to optimize the final measures
 func findCorrectI(MinRTT, baseMinRTT, baseStdDevRtt time.Duration, target string, numberOfSample, numberOfPingSample int) (int, error) {
 
 	var correctI int
