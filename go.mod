@@ -1,4 +1,4 @@
-module bandwidth_ping
+module github.com/LeoMarche/bandwidth-ping
 
 go 1.16
 
