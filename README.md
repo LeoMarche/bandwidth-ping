@@ -11,4 +11,4 @@ If we model the time packet spend in cables as a fixed propagation time (due to 
 
 1. Clone this repository
 2. go build in the root directory
-3. ```./main <target> <number of samples> <number of ping samples>```
+3. ```./bandwidth-ping <target> <number of samples> <number of ping samples>```
